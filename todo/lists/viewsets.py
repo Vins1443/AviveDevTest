@@ -55,6 +55,6 @@ class ListViewSet(viewsets.ModelViewSet, ViewSetActionSerializerMixin):
         Returns a user's lists that have a status of DONE.
         """
         serializer = self.get_serializer_class()
-        queryset = self.get_queryset()
+        queryset = self.get_queryset().filter(status="DONE")
         data = serializer(queryset, many=True).data
         return Response(data)
