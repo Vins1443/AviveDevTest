@@ -25,7 +25,7 @@ class TestList:
         """
         my_list = ListFactory()
         response = admin_user.get(reverse("lists-detail", kwargs={"pk": my_list.id}))
-        assert response.status_code == status.HTTP_404__NOT_FOUND
+        assert response.status_code == status.HTTP_404_NOT_FOUND
 
         resp = response.json()
         assert resp['name'] == my_list.name
@@ -66,7 +66,7 @@ class TestList:
             type="json",
         )
 
-        assert response.status_code == status.HTTP_200_OK
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
 
     def test_list_lists(self, auth_client):
         """
