@@ -29,7 +29,7 @@ class ListViewSet(viewsets.ModelViewSet, ViewSetActionSerializerMixin):
     def get_queryset(self):
         user = self.request.user
         if user.is_superuser:
-            return List.objects.none()
+            return List.objects.all()
         if user.is_staff:
             return List.objects.all()
         return List.objects.filter(user=user)

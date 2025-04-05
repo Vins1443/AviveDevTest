@@ -25,7 +25,7 @@ class TestList:
         """
         my_list = ListFactory()
         response = admin_user.get(reverse("lists-detail", kwargs={"pk": my_list.id}))
-        assert response.status_code == status.HTTP_404_NOT_FOUND
+        assert response.status_code == status.HTTP_200_OK
 
         resp = response.json()
         assert resp['name'] == my_list.name
@@ -100,7 +100,7 @@ class TestList:
         assert response.status_code == status.HTTP_200_OK
 
         resp = response.json()
-        assert len(resp) == 0
+        assert len(resp) == 5
 
     def test_done_list(self, auth_client):
         """
